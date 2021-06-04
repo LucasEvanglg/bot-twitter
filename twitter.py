@@ -14,6 +14,17 @@ user = api.me()
 search = 'Anapolis','Anápolis'
 numeroDeTweets = 1000
 
+#metodo para pesquisa / confiugação#
+for tweet in tweepy.Cursor(api.search, search).items(numeroDeTweets):
+    try:
+        print('tweet retuitado e favoritado')
+        tweet.retweet()
+        tweet.favorite()
+        time.sleep(30)
+    except tweepy.TweepError as e:
+        print(e.reason)
+    except StopIteration:
+        break
 
 
 
